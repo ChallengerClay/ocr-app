@@ -11,6 +11,6 @@
     <main class="flex-fill">
         @yield('content')
     </main>
-    @stack('scripts')
+    @stack('js')
 </body>
 </html>

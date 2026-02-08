@@ -26,10 +26,10 @@
                         @if(is_array($detalle))
                             <tr class="text-center">
                                 <td class="text-center">{{ __($sk)  }}</td>
-                                <td class="text-center">{{ $detalle['valor'] !== '' ? $detalle['valor'] : '—' }} {{ $detalle['valor'] !== '' ? $detalle['unidad'] : '' }}</td>
+                                <td class="text-center texto-copia">{{ $detalle['valor'] !== '' ? $detalle['valor'] : '—' }} {{ $detalle['valor'] !== '' ? $detalle['unidad'] : '' }}</td>
                                 <td class="text-center">
                                     @if($detalle['valor'] !== '')
-                                        <button class="btn btn-sm btn-outline-primary copy-btn">
+                                        <button class="btn btn-sm btn-outline-primary copiar-btn">
                                             <i class="bi bi-clipboard"></i> Copiar
                                         </button>
                                     @endif
@@ -66,4 +66,32 @@
         @endforeach
     </div>
 @endsection
+@push('js')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
+    document.querySelectorAll('.copiar-btn').forEach(boton => {
+        boton.addEventListener('click', () => {
+
+            // fila del botón clickeado
+            const fila = boton.closest('tr');
+
+            // SOLO la columna valor
+            const texto = fila.querySelector('.texto-copia').innerText.trim();
+
+            // copiar al portapapeles
+            navigator.clipboard.writeText(texto)
+                .then(() => {
+                    // opcional: mensaje de éxito
+                    alert('Valor copiado: ' + texto);
+                })
+                .catch(err => {
+                    console.error('Error al copiar', err);
+                });
+
+        });
+    });
+
+});
+</script>
+@endpush
