@@ -1,0 +1,11 @@
+{
+  "proteinas": "Proteins",
+  "carbohidratos": "Carbohydrates",
+  "grasa": "Fat",
+  "energia": "Energy",
+  "vitamina_a": "Vitamin A",
+  "vitamina_d": "Vitamin D",
+  "Nutriente": "Nutrient",
+  "Valor": "Value",
+  "Unidad": "Unit"
+}
